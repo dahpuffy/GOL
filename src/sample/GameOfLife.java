@@ -49,22 +49,47 @@ public class GameOfLife extends javax.swing.JFrame {
 
     private boolean decide(int i, int j) {
         int neighbours = 0;
-        if (j > 0) {
-            if (currentMove[i][j - 1]) neighbours++;
-            if (i > 0) if (currentMove[i - 1][j - 1]) neighbours++;
-            if (i < H - 1) if (currentMove[i + 1][j - 1]) neighbours++;
+        if (j <= 0) {
+        } else {
+            if (!currentMove[i][j - 1]) {
+            } else {
+                neighbours++;
+            }
+            if (i <= 0 || !currentMove[i - 1][j - 1]) {
+            } else {
+                neighbours++;
+            }
+            if (i >= H - 1 || !currentMove[i + 1][j - 1]) {
+            } else {
+                neighbours++;
+            }
         }
 
-        if (j < W - 1) {
-            if (currentMove[i][j + 1]) neighbours++;
-            if (i > 0) if (currentMove[i - 1][j + 1]) neighbours++;
-            if (i < H - 1) if (currentMove[i + 1][j + 1]) neighbours++;
+        if (j >= W - 1) {
+        } else {
+            if (!currentMove[i][j + 1]) {
+            } else {
+                neighbours++;
+            }
+            if (i <= 0 || !currentMove[i - 1][j + 1]) {
+            } else {
+                neighbours++;
+            }
+            if (i >= H - 1 || !currentMove[i + 1][j + 1]) {
+            } else {
+                neighbours++;
+            }
         }
 
-        if (i > 0) if (currentMove[i - 1][j]) neighbours++;
-        if (i < H - 1) if (currentMove[i + 1][j]) neighbours++;
-        if (neighbours == 3) return true;
-        return currentMove[i][j] && neighbours == 2;
+        if (i > 0 && currentMove[i - 1][j]) {
+            neighbours++;
+        }
+        if (i < H - 1 && currentMove[i + 1][j]) {
+            neighbours++;
+            return neighbours == 3 || currentMove[i][j] && neighbours == 2;
+        } else {
+            return neighbours == 3 || currentMove[i][j] && neighbours == 2;
+        }
     }
 
     private void repain() {
