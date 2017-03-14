@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
-
+public class Main {
+/*
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -20,6 +20,11 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+*/
+    public static void main(String[] args) {
+        GameOfLife life = new GameOfLife();
+        life.setLocationRelativeTo(null);
+        life.show();
+    }
 }
 
