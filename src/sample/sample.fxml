@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Game of Life" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
-  <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="100.0">
          <children>
-            <ToolBar layoutX="-4.0" layoutY="339.0" prefHeight="32.0" prefWidth="607.0" />
-            <Slider layoutX="529.0" layoutY="272.0" prefHeight="16.0" prefWidth="61.0" />
-            <Button layoutX="531.0" layoutY="230.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="530.0" layoutY="197.0" mnemonicParsing="false" text="Button" />
-         </children></AnchorPane>
-  </content>
-</TitledPane>
+            <Button mnemonicParsing="false" text="Start/Stop" />
+            <Button mnemonicParsing="false" text="Reset" />
+            <ChoiceBox prefWidth="150.0" />
+         </children>
+      </VBox>
+      <Canvas height="400.0" layoutX="100.0" width="507.0" />
+   </children>
+</Pane>

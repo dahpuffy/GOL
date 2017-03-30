@@ -1,18 +1,7 @@
 package sample;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class Controller implements Initializable{
-
+public class Controller {
+/*
     public double animationTimer;
     @FXML
     public Canvas cv;
@@ -44,5 +33,5 @@ public class Controller implements Initializable{
     public void setrowsize(){}
 
 
-
+*/
 }

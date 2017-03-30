@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.application.Application;
+
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.Image;
@@ -7,9 +9,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.SwingUtilities;
 
-public class GameOfLife extends javax.swing.JFrame {
+public class GameOfLife {
 
-    final int W = 200, H = 100;
+  /*  final int W = 200, H = 100;
     boolean[][] currentMove = new boolean[H][W], nextMove = new boolean[H][W];
     boolean play;
     private Image offScrImg;
@@ -23,20 +25,21 @@ public class GameOfLife extends javax.swing.JFrame {
         Timer time = new Timer();
         TimerTask task = new TimerTask() {
             public void run() {
-                if (play) {
-                    for (int i = 0; i < H; i++) {
-                        for (int j = 0; j < W; j++) {
-                            nextMove[i][j] = decide(i, j);
-                        }
-                    }
-
-                    for (int i = 0; i < H; i++) {
-                        for (int j = 0; j < W; j++) {
-                            currentMove[i][j] = nextMove(i, j);
-                        }
-                    }
-                    repain();
+                if (!play) {
+                    return;
                 }
+                for (int i = 0; i < H; i++) {
+                    for (int j = 0; j < W; j++) {
+                        nextMove[i][j] = decide(i, j);
+                    }
+                }
+
+                for (int i = 0; i < H; i++) {
+                    for (int j = 0; j < W; j++) {
+                        currentMove[i][j] = nextMove(i, j);
+                    }
+                }
+                repain();
             }
 
             private boolean nextMove(int i, int j) {
@@ -208,8 +211,7 @@ public class GameOfLife extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         play = !play;
-        if (play) jButton1.setText("Stop");
-        else jButton1.setText("Play");
+        jButton1.setText(play ? "Stop" : "Play");
         repain();
     }
 
@@ -221,9 +223,7 @@ public class GameOfLife extends javax.swing.JFrame {
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {
         int j = W * evt.getX() / jPanel1.getWidth();
         int i = H * evt.getY() / jPanel1.getHeight();
-        if (SwingUtilities.isLeftMouseButton(evt)) {
-            currentMove[i][j] = true;
-        } else currentMove[i][j] = false;
+        currentMove[i][j] = SwingUtilities.isLeftMouseButton(evt);
         repain();
     }
 
@@ -251,4 +251,5 @@ public class GameOfLife extends javax.swing.JFrame {
     private javax.swing.JButton jButton1 = new javax.swing.JButton();
     private javax.swing.JButton jButton2 = new javax.swing.JButton();
     private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+    */
 }
