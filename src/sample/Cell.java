@@ -1,4 +1,4 @@
-package sample.core;
+package sample;
 
 public class Cell {
 
@@ -13,15 +13,15 @@ public class Cell {
         this.state = state;
     }
 
-    public void setNewState(boolean state) {
+    void setNewState(boolean state) {
         newState = state;
     }
 
-    public void updateState() {
+    void updateState() {
         state = newState;
     }
 
-    public boolean getState() {
+    boolean getState() {
         return state;
     }
 }

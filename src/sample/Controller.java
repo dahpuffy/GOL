@@ -1,4 +1,4 @@
-package sample.gui;
+package sample;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Duration;
-import sample.core.GameBoard;
 
 public class Controller implements Initializable {
 

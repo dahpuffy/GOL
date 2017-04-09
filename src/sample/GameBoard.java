@@ -1,12 +1,12 @@
-package sample.core;
+package sample;
 
-public class GameBoard {
+class GameBoard {
 
     private Cell[][] grid;
     private int height = 3;
     private int width = 3;
 
-    public GameBoard(int height, int width, double p) {
+    GameBoard(int height, int width, double p) {
         this.height = height;
         this.width = width;
         grid = new Cell[height][width];
@@ -22,11 +22,11 @@ public class GameBoard {
         }
     }
 
-    public Cell[][] getGrid() {
+    Cell[][] getGrid() {
         return grid;
     }
 
-    public int getSize() {
+    int getSize() {
         return width;
     }
 
@@ -87,7 +87,7 @@ public class GameBoard {
         return grid[row][col].getState();
     }
 
-    public void update() {
+    void update() {
         prepare();
         commit();
     }

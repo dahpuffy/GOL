@@ -1,11 +1,8 @@
-package sample.gui;
+package sample;
 
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import sample.core.GameBoard;
-import sample.core.Cell;
-import sample.core.DisplayDriver;
 
 public class Display implements DisplayDriver {
     private int bs;
