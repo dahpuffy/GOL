@@ -1,4 +1,4 @@
-package sample;
+package sample.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,13 +9,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Game of Life");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+    public void start(Stage stage) throws Exception {
+        Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+
+        stage.setTitle("Game of Life");
+        stage.setScene(new Scene(parent));
+        stage.show();
     }
 
 
