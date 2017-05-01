@@ -116,5 +116,5 @@ abstract class GameLogic {
         }
     }
 
-    public abstract void displayBoard(GameLogic board);
+    public abstract void gameBoard(GameLogic board);
 }

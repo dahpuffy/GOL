@@ -48,7 +48,7 @@ public class Controller implements Initializable {
 
         loop = new Timeline(new KeyFrame(Duration.millis(300), e -> {
             board.update();
-            display.displayBoard(board);
+            display.gameBoard(board);
         }));
 
         loop.setCycleCount(100);
@@ -87,7 +87,7 @@ public class Controller implements Initializable {
     private void createBoard(int size, double p) {
         board = new GameLogic(size, size, p) {
             @Override
-            public void displayBoard(GameLogic board) {
+            public void gameBoard(GameLogic board) {
 
             }
         };
