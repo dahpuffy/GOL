@@ -1,120 +1,57 @@
 package sample;
 
-abstract class GameBoard {
+import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
-    private Cell[][] grid;
-    private int height = 3;
-    private int width = 3;
+public class GameBoard extends GameLogic {
+    private int bs;
+    private TilePane tp = new TilePane(3,3);
 
-    GameBoard(int height, int width, double p) {
-        this.height = height;
-        this.width = width;
-        grid = new Cell[height][width];
+    GameBoard(int boardSize, int cellSize, GameLogic board) {
+        super();
+        bs = boardSize;
+        tp.setPrefRows(boardSize);
+        tp.setPrefColumns(boardSize);
 
-        for (int h = 0; h < grid.length; h++) {
-            for (int w = 0; w < grid[h].length; w++) {
-                grid[h][w] = new Cell();
-                if (Math.random() <= p) {
-                    grid[h][w].setNewState(true);
-                    grid[h][w].updateState();
-                }
+        Cell[][] g = board.getGrid();
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                Color c = g[i][j].getState() ? Color.DARKGRAY : Color.WHITE;
+                Rectangle r = new Rectangle(cellSize, cellSize, c);
+                tp.getChildren().add(r);
+
+                attachListeners(r, g[i][j]);
             }
         }
     }
 
-    GameBoard() {
-
-    }
-
-    Cell[][] getGrid() {
-        return grid;
-    }
-
-    int getSize() {
-        return width;
-    }
-
-    private int neighbourCount(int row, int col) {
-        int sum = 0;
-        if (row != 0 && col != 0){          //1
-            if(isAlive(row-1,col-1)) {
-                sum++;
-            }
-        }
-
-        if (row != 0){
-            if(isAlive(row-1,col)) {   //2
-                sum++;
-            }
-        }
-
-        if (row != 0 && col != width-1) {   //3
-            if(isAlive(row-1,col+1)) {
-                sum++;
-            }
-        }
-
-        if (col != 0){
-            if(isAlive(row,col-1)) {    //4
-                sum++;
-            }
-        }
-
-        if (col != width-1){
-            if(isAlive(row,col+1)) {    //5
-                sum++;
-            }
-        }
-
-        if (row != height-1 && col != 0){
-            if(isAlive(row+1,col-1)) { //6
-                sum++;
-            }
-        }
-
-        if (row != height-1){
-            if(isAlive(row+1,col)) { //7
-                sum++;
-            }
-        }
-
-        if (row != height-1 && col != width-1) {
-            if(isAlive(row+1,col+1)) { //8
-                sum++;
-            }
-        }
-
-        return sum;
-    }
-
-    private boolean isAlive(int row, int col) {
-        return grid[row][col].getState();
-    }
-
-    void update() {
-        prepare();
-        commit();
-    }
-
-    private void prepare() {
-        for (int h = 0; h < grid.length; h++) {
-            for (int w = 0; w < grid[h].length; w++) {
-                int nr = neighbourCount(h,w);
-                if (nr < 2) { grid[h][w].setNewState(false);}  //Any live cell with fewer than two neighbours dies, as if caused by underpopulation.
-                else if (nr > 3) { grid[h][w].setNewState(false);} //Any live cell with two or three neighbours lives on to the next generation.
-                else if (nr == 3) { grid[h][w].setNewState(true);} //Any live cell with more than three live neighbours dies, as if by overpopulation.
-                else if (nr == 2) { grid[h][w].setNewState(grid[h][w].getState());} //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+    @Override
+    public void displayBoard(GameLogic board) {
+        Cell[][] g = board.getGrid();
+        for (int i = 0; i < g.length; i++) {
+            for (int j = 0; j < g[0].length; j++) {
+                Rectangle r = (Rectangle) tp.getChildren().get(boardToPaneLoc(i, j));
+                r.setFill(g[i][j].getState() ? Color.DARKGRAY : Color.WHITE);
             }
         }
     }
 
-    private void commit() {
-        for (Cell[] aGrid : grid) {
-            for (Cell anAGrid : aGrid) {
-                anAGrid.updateState();
-            }
-        }
+    TilePane getPane() {
+        return tp;
     }
 
-    public abstract void displayBoard(GameBoard board);
+    private int boardToPaneLoc(int i, int j) {
+        return i * bs + j;
+    }
+
+    private void attachListeners(Rectangle r, Cell c) {
+        r.setOnMousePressed(e -> r.setFill(Color.GRAY));
+
+        r.setOnMouseClicked(e -> {
+            r.setFill(c.getState() ? Color.WHITE : Color.DARKGRAY);
+            c.setNewState(!c.getState());
+            c.updateState();
+        });
+    }
 }

@@ -22,9 +22,9 @@ public class Controller implements Initializable {
     public Slider countSlider;
     public Button runButton, stopButton, randomizeButton, clearButton;
 
-    private GameBoard board;
+    private GameLogic board;
 
-    private Display display;
+    private GameBoard display;
 
     private Timeline loop = null;
 
@@ -85,9 +85,9 @@ public class Controller implements Initializable {
     }
 
     private void createBoard(int size, double p) {
-        board = new GameBoard(size, size, p) {
+        board = new GameLogic(size, size, p) {
             @Override
-            public void displayBoard(GameBoard board) {
+            public void displayBoard(GameLogic board) {
 
             }
         };
@@ -95,7 +95,7 @@ public class Controller implements Initializable {
     }
 
     private void createDisplay() {
-        display = new Display(board.getSize(), cellSize, board);
+        display = new GameBoard(board.getSize(), cellSize, board);
 
         base.getChildren().clear();
         base.getChildren().add(new Group(display.getPane()));
