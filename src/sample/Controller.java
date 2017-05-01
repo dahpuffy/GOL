@@ -85,7 +85,12 @@ public class Controller implements Initializable {
     }
 
     private void createBoard(int size, double p) {
-        board = new GameBoard(size, size, p);
+        board = new GameBoard(size, size, p) {
+            @Override
+            public void displayBoard(GameBoard board) {
+
+            }
+        };
         createDisplay();
     }
 

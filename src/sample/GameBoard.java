@@ -1,6 +1,6 @@
 package sample;
 
-class GameBoard {
+abstract class GameBoard {
 
     private Cell[][] grid;
     private int height = 3;
@@ -20,6 +20,10 @@ class GameBoard {
                 }
             }
         }
+    }
+
+    GameBoard() {
+
     }
 
     Cell[][] getGrid() {
@@ -111,4 +115,6 @@ class GameBoard {
             }
         }
     }
+
+    public abstract void displayBoard(GameBoard board);
 }

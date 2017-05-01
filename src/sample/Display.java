@@ -4,11 +4,12 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Display implements DisplayDriver {
+public class Display extends GameBoard {
     private int bs;
     private TilePane tp = new TilePane(3,3);
 
     Display(int boardSize, int cellSize, GameBoard board) {
+        super();
         bs = boardSize;
         tp.setPrefRows(boardSize);
         tp.setPrefColumns(boardSize);
